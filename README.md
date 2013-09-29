@@ -14,6 +14,8 @@ Add this configuration in
 	  lessCss:
 	    # executable can be the less-compiler executable or empty for client-side rendering (not supported yet)
 	    executable: lessc
+    	# less-javascript file (see less.org)
+    	lessjs: less-1.4.2.min.js
  
 
 ## Usage ##
