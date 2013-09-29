@@ -4,8 +4,8 @@ class toLessCssPluginConfiguration extends sfPluginConfiguration
 {
   public 
     $exe = '',
-    $options = array(),
-    $currentRunFail = array();
+    $options = array();
+    //,$currentRunFail = array();
 
   public function configure(){
     $this->dispatcher->connect('dm.layout.filter_stylesheets', array($this, 'listenToFilterStylesheetsEvent'));
@@ -22,7 +22,7 @@ class toLessCssPluginConfiguration extends sfPluginConfiguration
     unset($assets['']);
     return $assets;
   }
-  
+  /*
   public function listenToFilterJavaScriptsEvent(sfEvent $event, array $assets){
     $this->exe = trim(sfConfig::get('app_lessCss_executable', ''));
     $this->options = sfConfig::get('app_lessCss_options', array());
@@ -44,7 +44,7 @@ class toLessCssPluginConfiguration extends sfPluginConfiguration
     }
     return $assets;
   }
-  
+  */
   public function handleStylesheet($strAssetPath){
     if(false === stripos($strAssetPath, 'less.css'))
       return $strAssetPath;
@@ -78,9 +78,12 @@ class toLessCssPluginConfiguration extends sfPluginConfiguration
           file_put_contents($assetPath, implode(PHP_EOL, $output));
           touch($assetPath, $mTimeLessFile);
           return $strAssetPath;
+      }else{
+        $msg = (count($output) > 5 ? $lastLine  : implode(PHP_EOL, $output)) . sprintf(' exit_code: %d', $retVal);
+        throw new Exception($msg);
       }
     }
-    $this->currentRunFail[$strAssetPath] = true;
+    //$this->currentRunFail[$strAssetPath] = true;
     
     // client side not supported yet
     return '';
