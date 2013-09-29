@@ -1,0 +1,21 @@
+all:
+  lessCss:
+    # mode can be the less-compiler executable or empty for client-side rendering (not supported yet)
+    executable: lessc
+    lessjs: less-1.4.1.min.js
+    options:
+      async: false
+      fileAsync: false
+      poll: 1000
+      dumpLineNumbers: comments
+      relativeUrls: false
+      rootpath: 
+prod:
+  lessCss:
+    options:
+      env: production
+
+dev:
+  lessCss:
+    options:
+      env: development

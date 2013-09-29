@@ -1,0 +1,1 @@
+less = {"async":false,"fileAsync":false,"poll":1000,"dumpLineNumbers":"comments","relativeUrls":false,"rootpath":null,"env":"development"};jQuery("link[href$='less']").attr("ref", "stylesheet/less");
